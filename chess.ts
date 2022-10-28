@@ -495,7 +495,7 @@ return callBack(row +1, col,'up')}
 
 
 function
-movement(row: number,col: number,myCallback,piece: string,option:){
+movement(row: number,col: number,myCallback,piece: string,option?: SquareFace ){
 let arr: [number,number,string][] = [[0,0,"string"]];
     switch (piece) {
         case "rook":
@@ -644,7 +644,10 @@ if (false == checkMate) {return}
 
     console.log("MATEDIRECTION")
     resetCount(); // This resets the count because previous iterations of this function would have altered the count and those interations dont exist anymore.
-    if (findSquare(row,col).altPieceType != null){
+    
+
+    if (findSquare(row,col).altPieceType != null){ //how can I do a null check on this????
+
     findSquare(row,col).altPieceType = 'placeholder';
     findSquare(row,col).altPieceColor = currentTurnColor;
     countChecker();
@@ -791,7 +794,7 @@ if (findSquare(row,col).altPieceType != '' && findSquare(row,col).altPieceType !
 
 
 function
-pieceChecker(clickedSquare, row, col){
+pieceChecker(clickedSquare: SquareFace, row: number, col: number){
     
         if ('rook' == clickedSquare.pieceType && clickedSquare.pieceColor == currentTurnColor){
       
@@ -824,8 +827,8 @@ if ('bishop' == clickedSquare.pieceType && clickedSquare.pieceColor == currentTu
         for (let i = 0; i < pawnArray.length; i++){
     
         if ( currentSquare == pawnArray[i]){
-            pawnUp(row-2,col,"pawnUp")
-            pawnUp(row-1,col,"pawnUp")
+            pawnUp(row-2,col)
+            pawnUp(row-1,col)
         }
     }
     pieceDirection(row-1, col+1, "pawn");
@@ -852,8 +855,8 @@ if ('bishop' == clickedSquare.pieceType && clickedSquare.pieceColor == currentTu
             for (let i = 0; i < wPawnArray.length; i++){
         
             if (  currentSquare == wPawnArray[i]){
-                pawnUp(row+2,col,"pawnUp"); 
-                pawnUp(row+1,col,"pawnUp");
+                pawnUp(row+2,col); 
+                pawnUp(row+1,col);
             }
             }
             pieceDirection(row+1, col+1, "pawn");
@@ -909,7 +912,7 @@ pieceDirection(row, col,  direction){
 
 
 function
-pawnUp(row, col){
+pawnUp(row: number, col: number){
 
  let currentSquare = findSquare(row,col)
    
@@ -933,7 +936,7 @@ pawnUp(row, col){
 }
 
 function
-pawnEncounter(row, col){
+pawnEncounter(row: number, col: number){
 
  let currentSquare = findSquare(row,col)
    
@@ -959,7 +962,7 @@ pawnEncounter(row, col){
 
 
 function
-wEnPassantLeft(row,col){
+wEnPassantLeft(row: number,col: number){
  
     leftOfPawn = findSquare(row,col - 1)
     leftStartingSquare = findSquare(row + 2,col - 1)
@@ -981,7 +984,7 @@ wEnPassantLeft(row,col){
 }
 
 function
-wEnPassantRight(row,col){
+wEnPassantRight(row: number,col: number){
  
     rightOfPawn = findSquare(row,col + 1)
     rightStartingSquare = findSquare(row + 2,col + 1)
@@ -1008,7 +1011,7 @@ wEnPassantRight(row,col){
 
 
 function
-bEnPassantLeft(row,col){
+bEnPassantLeft(row: number,col: number){
  
     leftOfPawn = findSquare(row,col - 1)
     leftStartingSquare = findSquare(row - 2,col - 1)
@@ -1033,7 +1036,7 @@ bEnPassantLeft(row,col){
 
 
 function
-bEnPassantRight(row,col){
+bEnPassantRight(row: number,col: number){
  
     rightOfPawn = findSquare(row,col + 1)
     rightStartingSquare = findSquare(row - 2,col + 1)
@@ -1057,7 +1060,7 @@ bEnPassantRight(row,col){
 
 
 function
-enPassantMove(row,col,color_direction)
+enPassantMove(row: number,col: number,color_direction: string)
 {   
     switch (color_direction){
         case "blackleft": 
@@ -1193,7 +1196,7 @@ mainEventFunction(currentSquare){
 
 //      Castling
 
-document.getElementById("g1-id").addEventListener('click', () => {
+document.getElementById("g1-id")?.addEventListener('click', () => {
 
     if (currentObject == e1Square && false == wKingMoved && false == h1RookMoved && f1Square.pieceType == '' && g1Square.pieceType == ''
         && 0 == g1Square.blackCount && 0 == f1Square.blackCount&& 0 == e1Square.blackCount) {
@@ -1213,7 +1216,7 @@ document.getElementById("g1-id").addEventListener('click', () => {
     }})
 
 
-    document.getElementById("g8-id").addEventListener('click', () => {
+    document.getElementById("g8-id")?.addEventListener('click', () => {
 
         if (currentObject == e8Square && false == bKingMoved && false == h8RookMoved && f8Square.pieceType == '' && g8Square.pieceType == ''
             && 0 == g8Square.whiteCount && 0 == f8Square.whiteCount && 0 == e8Square.whiteCount) {
@@ -1232,7 +1235,7 @@ document.getElementById("g1-id").addEventListener('click', () => {
             return
         }})
 
-        document.getElementById("c1-id").addEventListener('click', () => {
+        document.getElementById("c1-id")?.addEventListener('click', () => {
 
             if (currentObject == e1Square && false == wKingMoved && false == a1RookMoved && b1Square.pieceType == '' && c1Square.pieceType == ''
                 && 0 == c1Square.blackCount && 0 == e1Square.blackCount && 0 == d1Square.blackCount && d1Square.pieceType == '') {
@@ -1255,7 +1258,7 @@ document.getElementById("g1-id").addEventListener('click', () => {
 
 
 
-            document.getElementById("c8-id").addEventListener('click', () => {
+            document.getElementById("c8-id")?.addEventListener('click', () => {
 
                 if (currentObject == e8Square  && false == bKingMoved && false == a8RookMoved && b8Square.pieceType == '' && c8Square.pieceType == ''
                     && 0 == c8Square.whiteCount && 0 == e8Square.whiteCount && 0 == d8Square.whiteCount && d8Square.pieceType == '') {

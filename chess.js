@@ -1,3 +1,4 @@
+var _a, _b, _c, _d;
 var _this = this;
 //v
 //  Global variables
@@ -467,7 +468,7 @@ function mateDirection(row, col, direction, startSquare) {
         }
         console.log("MATEDIRECTION");
         resetCount(); // This resets the count because previous iterations of this function would have altered the count and those interations dont exist anymore.
-        if (findSquare(row, col).altPieceType != null) {
+        if (findSquare(row, col).altPieceType != null) { //how can I do a null check on this????
             findSquare(row, col).altPieceType = 'placeholder';
             findSquare(row, col).altPieceColor = currentTurnColor;
             countChecker();
@@ -601,8 +602,8 @@ function pieceChecker(clickedSquare, row, col) {
         }
         for (var i = 0; i < pawnArray.length; i++) {
             if (currentSquare == pawnArray[i]) {
-                pawnUp(row - 2, col, "pawnUp");
-                pawnUp(row - 1, col, "pawnUp");
+                pawnUp(row - 2, col);
+                pawnUp(row - 1, col);
             }
         }
         pieceDirection(row - 1, col + 1, "pawn");
@@ -873,7 +874,7 @@ function mainEventFunction(currentSquare) {
     }
 }
 //      Castling
-document.getElementById("g1-id").addEventListener('click', function () {
+(_a = document.getElementById("g1-id")) === null || _a === void 0 ? void 0 : _a.addEventListener('click', function () {
     if (currentObject == e1Square && false == wKingMoved && false == h1RookMoved && f1Square.pieceType == '' && g1Square.pieceType == ''
         && 0 == g1Square.blackCount && 0 == f1Square.blackCount && 0 == e1Square.blackCount) {
         e1Square.pieceType = '';
@@ -888,7 +889,7 @@ document.getElementById("g1-id").addEventListener('click', function () {
         return;
     }
 });
-document.getElementById("g8-id").addEventListener('click', function () {
+(_b = document.getElementById("g8-id")) === null || _b === void 0 ? void 0 : _b.addEventListener('click', function () {
     if (currentObject == e8Square && false == bKingMoved && false == h8RookMoved && f8Square.pieceType == '' && g8Square.pieceType == ''
         && 0 == g8Square.whiteCount && 0 == f8Square.whiteCount && 0 == e8Square.whiteCount) {
         e8Square.pieceType = '';
@@ -903,7 +904,7 @@ document.getElementById("g8-id").addEventListener('click', function () {
         return;
     }
 });
-document.getElementById("c1-id").addEventListener('click', function () {
+(_c = document.getElementById("c1-id")) === null || _c === void 0 ? void 0 : _c.addEventListener('click', function () {
     if (currentObject == e1Square && false == wKingMoved && false == a1RookMoved && b1Square.pieceType == '' && c1Square.pieceType == ''
         && 0 == c1Square.blackCount && 0 == e1Square.blackCount && 0 == d1Square.blackCount && d1Square.pieceType == '') {
         a1Square.pieceType = '';
@@ -918,7 +919,7 @@ document.getElementById("c1-id").addEventListener('click', function () {
         return;
     }
 });
-document.getElementById("c8-id").addEventListener('click', function () {
+(_d = document.getElementById("c8-id")) === null || _d === void 0 ? void 0 : _d.addEventListener('click', function () {
     if (currentObject == e8Square && false == bKingMoved && false == a8RookMoved && b8Square.pieceType == '' && c8Square.pieceType == ''
         && 0 == c8Square.whiteCount && 0 == e8Square.whiteCount && 0 == d8Square.whiteCount && d8Square.pieceType == '') {
         a8Square.pieceType = '';
