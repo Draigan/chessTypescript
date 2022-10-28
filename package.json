@@ -1,0 +1,24 @@
+{
+  "name": "chesstypescript",
+  "version": "1.0.0",
+  "description": "",
+  "main": "original.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Draigan/chessTypescript.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Draigan/chessTypescript/issues"
+  },
+  "homepage": "https://github.com/Draigan/chessTypescript#readme",
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^5.41.0",
+    "@typescript-eslint/parser": "^5.41.0",
+    "eslint": "^8.26.0"
+  }
+}
